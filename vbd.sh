@@ -8,7 +8,7 @@
 
 user_name="pires"
 bd_path="/opt/lampp/bin"
-folder_default="/opt/lampp/htdocs/tuiva/common/bd"
+folder_default="/opt/lampp/htdocs/projetoModelo/common/bd"
 file_name=$(date +%Y%m%d%H%M%S)"mysql_"$user_name".slq"
 bd_name="projetoModelo"
 
