@@ -3,10 +3,10 @@
 return [
                     ['label' => 'Geral', 'options' => ['class' => 'header']],
                     //['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Login', 'url' => ['user/login'], 'visible' => Yii::$app->user->isGuest],
                      [
                         'label' => 'Usuários',
-                        'icon' => 'fa fa-share',
+                        'icon' => 'fa fa-users',
                         'url' => '#',
                         'items' => [
                                       
@@ -19,12 +19,13 @@ return [
                          ],
                      [
                         'label' => 'Permissões',
-                        'icon' => 'fa fa-share',
+                        'icon' => 'fa fa-lock',
                         'url' => '#',
                         'items' => [
                                       
-                                        ['label' => 'Papéis', 'url' => ['/rbac/role']],
+                                        
                                         ['label' => 'Permissões', 'url' => ['/rbac/permission']],
+                                         ['label' => 'Papéis', 'url' => ['/rbac/role']],
                                         ['label' => 'Atribuições', 'url' => ['/rbac/assignment']],
                                         
                                    
