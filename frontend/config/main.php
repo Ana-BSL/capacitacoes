@@ -22,6 +22,13 @@ return [
                 ],
             ],
          ],
+         'assetManager' => [
+        'bundles' => [
+            'dmstr\web\AdminLteAsset' => [
+                'skin' => 'skin-purple',
+            ],
+        ],
+    ],
         /*'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

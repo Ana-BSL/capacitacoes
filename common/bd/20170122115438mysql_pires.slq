@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.26, for Linux (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.13-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: projetoModelo
 -- ------------------------------------------------------
--- Server version	5.6.26
+-- Server version	10.1.13-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -150,7 +150,7 @@ CREATE TABLE `migration` (
 
 LOCK TABLES `migration` WRITE;
 /*!40000 ALTER TABLE `migration` DISABLE KEYS */;
-INSERT INTO `migration` VALUES ('m000000_000000_base',1472818875),('m130524_201442_init',1472818878),('m140209_132017_init',1472821708),('m140403_174025_create_account_table',1472821710),('m140504_113157_update_tables',1472821716),('m140504_130429_create_token_table',1472821719),('m140506_102106_rbac_init',1472823065),('m140830_171933_fix_ip_field',1472821720),('m140830_172703_change_account_table_name',1472821720),('m141222_110026_update_ip_field',1472821721),('m141222_135246_alter_username_length',1472821722),('m150614_103145_update_social_account_table',1472821726),('m150623_212711_fix_username_notnull',1472821727),('m151218_234654_add_timezone_to_profile',1472821728);
+INSERT INTO `migration` VALUES ('m000000_000000_base',1472818875),('m130524_201442_init',1472818878),('m140209_132017_init',1472821708),('m140403_174025_create_account_table',1472821710),('m140504_113157_update_tables',1472821716),('m140504_130429_create_token_table',1472821719),('m140506_102106_rbac_init',1472823065),('m140830_171933_fix_ip_field',1472821720),('m140830_172703_change_account_table_name',1472821720),('m141222_110026_update_ip_field',1472821721),('m141222_135246_alter_username_length',1472821722),('m150614_103145_update_social_account_table',1472821726),('m150623_212711_fix_username_notnull',1472821727),('m151218_234654_add_timezone_to_profile',1472821728),('m160929_103127_add_last_login_at_to_user_table',1485094509);
 /*!40000 ALTER TABLE `migration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +182,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `profile` VALUES (2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +243,6 @@ CREATE TABLE `token` (
 
 LOCK TABLES `token` WRITE;
 /*!40000 ALTER TABLE `token` DISABLE KEYS */;
-INSERT INTO `token` VALUES (1,'igxlymO2AgoEoCqI2Do72xJwUHnavEKN',1472821812,0);
 /*!40000 ALTER TABLE `token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,10 +266,11 @@ CREATE TABLE `user` (
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   `flags` int(11) NOT NULL DEFAULT '0',
+  `last_login_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_unique_email` (`email`),
   UNIQUE KEY `user_unique_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +279,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'pires','juniorpiresupe@gmail.com','$2y$10$bdkZ0q6ahqFZn4lUMa9o7.n/spbX7dd.GHxoNgGOqVRAhMGRhbLvW','ms8-THZuhrbyKkTqWtw5963AQay0jKD_',1460044753,NULL,NULL,'127.0.0.1',1472821812,1472821812,0);
+INSERT INTO `user` VALUES (2,'admin','juniorpiresc@gmail.com','$2y$12$98VD9bGQlIzdhEPDsCESjOeTb4adfscXTqFcUr633hovCcdIcUSCS','il0nqgfMfGypWyKglMSY6jFKhhznIs2O',1485094731,NULL,NULL,'127.0.0.1',1485094731,1485094731,0,1485095371);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,4 +300,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-02 11:05:10
+-- Dump completed on 2017-01-22 11:54:41

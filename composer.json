@@ -18,13 +18,15 @@
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
+        "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-grid": "@dev",
         "dmstr/yii2-adminlte-asset": "2.*",
         "dektrium/yii2-user": "0.9.*@dev",
-        "johnitvn/yii2-rbac-plus": "*"
+        "johnitvn/yii2-rbac-plus": "*",
+        "johnitvn/yii2-ajaxcrud": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-codeception": "*",
+        "codeception/codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*"

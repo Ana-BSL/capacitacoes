@@ -10,9 +10,9 @@ return [
                         'url' => '#',
                         'items' => [
                                       
-                                        ['label' => 'Admin', 'url' => ['/user/admin/index']],
-                                        ['label' => 'Account', 'url' => ['/user/settings/account']],
-                                        ['label' => 'Network', 'url' => ['/user/settings/networks']],
+                                        ['label' => 'Administrar', 'url' => ['/user/admin/index']],
+                                        ['label' => 'Conta', 'url' => ['/user/settings/account']],
+                                        ['label' => 'Redes', 'url' => ['/user/settings/networks']],
                                         
                                    
                                    ]

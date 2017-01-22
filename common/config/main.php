@@ -41,7 +41,7 @@ return [
             'enablePasswordRecovery'=>true,
             //'confirmWithin' => 21600,
             'cost' => 12,
-            'admins' => ['pires'],
+            'admins' => ['pires','admin'],
             'mailer' => [
             'sender'                => 'juniorpiresupe@gmail.com', // or ['no-reply@myhost.com' => 'Sender name']
             'welcomeSubject'        => 'Welcome subject',
