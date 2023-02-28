@@ -1,5 +1,5 @@
 {
-    "name": "yiisoft/yii2-app-advanced",
+    "name": "sms-tic/salus",
     "description": "Yii 2 Advanced Project Template",
     "keywords": ["yii2", "framework", "advanced", "project template"],
     "homepage": "http://www.yiiframework.com/",
@@ -14,33 +14,80 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": ">=2.0.6",
-        "yiisoft/yii2-bootstrap": "*",
+        "php": ">=8.0.0",
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap4": "@dev",
         "yiisoft/yii2-swiftmailer": "*",
         "kartik-v/yii2-widgets": "*",
-        "kartik-v/yii2-grid": "@dev",
-        "dmstr/yii2-adminlte-asset": "2.*",
-        "dektrium/yii2-user": "0.9.*@dev",
-        "johnitvn/yii2-rbac-plus": "*",
-        "johnitvn/yii2-ajaxcrud": "*"
+        "kartik-v/yii2-tabs-x": "dev-master",
+        "kartik-v/yii2-datecontrol": "dev-master",
+        "kartik-v/yii2-widget-select2": "dev-master",
+        "kartik-v/yii2-money": "dev-master",
+        "kartik-v/dependent-dropdown": "dev-master",
+        "kartik-v/yii2-detail-view": "dev-master",
+        "kartik-v/yii2-editable": "dev-master",
+        "kartik-v/yii2-grid": "dev-master",
+        "kartik-v/yii2-builder": "dev-master",
+        "kartik-v/yii2-mpdf": "dev-master",
+        "kartik-v/yii2-tree-manager": "dev-master",
+        "kartik-v/yii2-checkbox-x": "dev-master",
+        "kartik-v/yii2-widget-depdrop": "dev-master",
+        "kartik-v/yii2-export": "dev-master",
+        "kartik-v/yii2-field-range": "dev-master",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/yii2-date-range": "dev-master",
+        "dektrium/yii2-user": "^0.9.14",
+        "johnitvn/yii2-ajaxcrud": "*",
+        "yiisoft/yii2-authclient": "^2.0",
+        "2amigos/yii2-date-picker-widget": "~1.0",
+        "2amigos/qrcode-library": "^2.0",
+        "marciocamello/yii2-x-editable": "dev-master",
+        "dmstr/yii2-adminlte-asset": "^2.1",
+        "yiisoft/yii2-jui": "^2.0",
+         "mpdf/mpdf": "^8.0.10",
+        "schmunk42/yii2-giiant": "@dev",
+        "mootensai/yii2-enhanced-gii": "dev-master",
+        "wbraganca/yii2-dynamicform": "*",
+        "yii2mod/yii2-rbac": "*",
+        "webzop/yii2-notifications": "*",
+        "phpoffice/phpspreadsheet": "dev-master", 
+        "phpoffice/phpword": "dev-master",
+        "dompdf/dompdf": "^1.0",
+        "bower-asset/moment": "*",
+        "koolreport/core": "^5.0",
+        "philippfrenzel/yii2fullcalendar": "3.9.0",
+        "mpdf/qrcode": "^1.1",
+        "fedemotta/yii2-widget-datatables": "*",
+        "reine/yii2-widget-datatables": "0.1.1"
     },
     "require-dev": {
-        "codeception/codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
-        "yiisoft/yii2-faker": "*"
+        "yiisoft/yii2-faker": "*",
+        "codeception/codeception": "^4.0",
+        "codeception/module-asserts": "^1.0",
+        "codeception/module-yii2": "^1.0",
+        "codeception/module-filesystem": "^1.0",
+        "codeception/verify": "~0.5.0 || ~1.1.0",
+        "symfony/browser-kit": ">=2.7 <=5.3"
     },
     "config": {
-        "process-timeout": 1800
-    },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
+        "platform": {
+            "php": "8.0.14"
+        },
+        "optimize-autoloader": true,
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
         }
     },
-    "scripts": {
-        "post-install-cmd": "php init --env=Development --overwrite=n"
-    }
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
