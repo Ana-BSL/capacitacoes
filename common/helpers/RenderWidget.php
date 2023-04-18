@@ -34,19 +34,6 @@ class RenderWidget {
         return  $form->field($params['model'],$params['attribute'])->widget(Select2::classname(),[
             'data'=>$params['data'],'options' => ['placeholder' =>$params['placeholder']],]);
     }
-
-    public static function selectUnidade($form,$params){
-        if(!isset($params['placeholder'])){
-            $params['placeholder'] = 'Selecione uma unidade';
-        }
-        
-        return  $form->field($params['model'],$params['attribute'])->widget(Select2::classname(),[
-            'data'=>$params['data'],
-            'options' => [
-                'placeholder' => $params['placeholder'],
-            ],
-        ]);
-    }
     
     public static function select2Ajax($form,$params){
         if(!isset($params['placeholder'])){

@@ -15,20 +15,20 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
-        'view' => [
+         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views' => '@frontend/themes/lte'
+                   '@app/views' => '@frontend/themes/lte'
                 ],
             ],
-        ],
-        'assetManager' => [
-            'bundles' => [
-                'dmstr\web\AdminLteAsset' => [
-                    'skin' => 'skin-green',
-                ],
+         ],
+         'assetManager' => [
+        'bundles' => [
+            'dmstr\web\AdminLteAsset' => [
+                'skin' => 'skin-purple',
             ],
         ],
+    ],
         /*'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

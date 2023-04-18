@@ -58,9 +58,7 @@
         "philippfrenzel/yii2fullcalendar": "3.9.0",
         "mpdf/qrcode": "^1.1",
         "fedemotta/yii2-widget-datatables": "*",
-        "reine/yii2-widget-datatables": "0.1.1",
-        "kartik-v/yii2-widget-datepicker": "@dev",
-        "kartik-v/yii2-widget-datetimepicker": "^1.5"
+        "reine/yii2-widget-datatables": "0.1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",
