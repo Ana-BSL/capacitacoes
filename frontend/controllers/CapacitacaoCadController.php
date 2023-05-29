@@ -354,6 +354,13 @@ class CapacitacaoCadController extends Controller
         }
     }
 
+    public function getCertificados()
+{
+    // Lógica para obter a lista de certificados para o modelo atual
+    // Retorne a lista de certificados aqui, por exemplo:
+    return CapacitacaoEspec::find()->where(['capacitacao_id' => $this->id])->all();
+}
+
     /**
      * Finds the CapacitacaoCad model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

@@ -55,9 +55,14 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'controller/action' => 'controller/certificado'
             ],
-        ],
-        */
+        ],*/
+            'mpdf' => [
+                'class' => \Mpdf\Mpdf::class,
+                // outras configurações do componente
+            ],
+            // outros componentes aqui        
     ],
     'params' => $params,
 ];

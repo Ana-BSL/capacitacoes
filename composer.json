@@ -61,6 +61,7 @@
         "reine/yii2-widget-datatables": "0.1.1",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-widget-datetimepicker": "^1.5"
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

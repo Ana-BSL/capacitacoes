@@ -82,5 +82,12 @@ return [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
         ],
+        'components' => [
+            'mpdf' => [
+                'class' => \Mpdf\Mpdf::class,
+                // Configurações adicionais do mPDF podem ser adicionadas aqui
+            ],
+            // outros componentes
+        ],
     ],
 ];

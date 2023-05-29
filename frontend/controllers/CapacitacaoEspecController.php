@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\CapacitacaoCad;
 use frontend\models\CapacitacaoRel;
 use frontend\models\UnidadeSaude;
 use frontend\search\CapacitacaoCadSearch;
@@ -9,12 +10,17 @@ use frontend\search\CapacitacaoRelSearch;
 use Yii;
 use frontend\models\CapacitacaoEspec;
 use frontend\search\CapacitacaoEspecSearch;
+use Mpdf\Mpdf;
+use Mpdf\Tag\Center;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\db\Query;
+use yii\log\Logger;
 
 /**
  * CapacitacaoEspecController implements the CRUD actions for CapacitacaoEspec model.
@@ -98,6 +104,73 @@ class CapacitacaoEspecController extends Controller
         ]);
     }
 
+    public function getUnidade($cnes)
+    {
+        $unidades =(new Query())
+                ->select('unidade_saude.nome, capacitacao_cad.cnes_unidade, unidade_saude.cnes')
+                ->distinct()
+                ->from('unidade_saude')
+                ->innerJoin('capacitacao_cad', 'capacitacao_cad.cnes_unidade = unidade_saude.cnes')
+                ->where(['capacitacao_cad.cnes_unidade' => $cnes])
+                ->one();
+            
+        if ($unidades === false) {
+            return null;
+        }
+
+        return $unidades['nome'];   
+    }
+
+    public function actionCertificado($id)
+    {
+        $capacitacoesRel = CapacitacaoRel::find()->where(['id_espectador' => $id])->all();
+        $capacitacoesIds = ArrayHelper::getColumn($capacitacoesRel, 'id_capacitacao');
+
+        $searchModel = new CapacitacaoCadSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andFilterWhere(['id_capacitacao' => $capacitacoesIds]);  
+
+        foreach ($capacitacoesIds as $capacitacaoId) {
+            
+            $espectador = CapacitacaoEspec::findOne($id);
+            $nome = $espectador ? $espectador->nome : '';
+            $capacitacao = CapacitacaoCad::findOne($capacitacaoId);
+            $data = $capacitacao ? $capacitacao->data_realizacao : '';
+            $titulo = $capacitacao ? $capacitacao->titulo : '';
+            $cargaHoraria = $capacitacao ? $capacitacao->carga_horaria : '';
+            $unidades = $capacitacao ? $capacitacao->cnes_unidade : '';
+
+            $unidade = $this->getUnidade($unidades);
+
+            $html = '<h1>Certificado de Conclusão</h1>';
+            $html .= '<p>Conferimos ao(a) ' . strtoupper($nome) . ', o presente certificado, por participar do(a) ' . $titulo . ' realizado(a) por ' . $unidade . ' no dia, ' . $data . ', perfazendo uma carga horária de ' . $cargaHoraria . 'h.</p>';
+
+            if (Yii::$app->request->get('pdf')) {
+                $pdf = Yii::$app->mpdf;
+                $pdf->WriteHTML($html);
+                $pdf->Output();
+                return;
+            }
+
+            //apagando os cadastros anteriores
+            unset($capacitacoesRel);
+            unset($capacitacoesIds);
+        }
+    
+        // Se não foi enviado o parâmetro, exibe o HTML em uma view
+        return $this->render('minhas-inscricoes', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'id' => $id,
+            'nome' => $nome,
+            'data' => $data,
+            'cargaHoraria' => $cargaHoraria,
+            'titulo' => $titulo,
+            'unidade' => $unidade,
+        ]); 
+     
+}
+
     public function actionMinhasInscricoes($id)
     {
         $capacitacoesRel = CapacitacaoRel::find()->where(['id_espectador' => $id])->all();
@@ -105,14 +178,20 @@ class CapacitacaoEspecController extends Controller
 
         $searchModel = new CapacitacaoCadSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->query->andFilterWhere(['id_capacitacao' => $capacitacoesIds]);
+        $dataProvider->query->andFilterWhere(['id_capacitacao' => $capacitacoesIds]);  
+
+        $certificado = $this->actionCertificado($id);
+
+        //return $certificado;
 
         return $this->render('minhas-inscricoes', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
-    }
+            'id' => $id,
+            'certificado' => $certificado,
+          ]);
 
+    }
 
     /**
      * Creates a new CapacitacaoEspec model.
